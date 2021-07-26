@@ -1,1 +1,143 @@
+body {
+	font-family: helvetica, arial, sans-serif;
+	margin: 0;
+}
 
+h1 {
+	font-style: italic;
+	color: #ffffff;
+}
+
+.home-grid-container {
+	display: grid;
+	grid-template-columns: 150px auto 150px;
+	grid-template-rows: 100px 600px 600px 150px;
+	height: 100vh;
+	width; 100vw;
+}
+
+.home-content {
+	box-sizing: border-box;
+	background-color: blue;
+	position: relative;
+	padding-left: 10px;
+	grid-columns-start: 2;
+	grid-column-end: span 1;
+}
+
+.login-grid-container {
+	display: grid;
+	grid-template-columns: auto 600px auto;
+	grid-template-rows: 100px auto 600px auto;
+	height: 100vh;
+	width; 100vw;
+}
+
+.login-content {
+	box-sizing: border-box;
+	background-color: blue;
+	position: relative;
+	padding-left: 10px;
+	grid-columns-start: 2;
+	grid-column-end: span 1;
+}
+
+.contact-grid-container {
+	display: grid;
+	grid-template-columns: auto 800px auto;
+	grid-template-rows: 100px auto 600px auto;
+	height: 100vh;
+	width; 100vw;
+}
+
+.contact-content {
+	box-sizing: border-box;
+	background-color: blue;
+	position: relative;
+	padding-left: 10px;
+	grid-columns-start: 2;
+	grid-column-end: span 1;
+}
+
+.header {
+	box-sizing: border-box;
+	background-color: red;
+	grid-columns-start: 1;
+	grid-column-end: span 3;
+}
+
+.nav {
+	box-sizing: border-box;
+	background-color: grey;
+	grid-columns-start: 1;
+	grid-column-end: span 3;
+}
+
+ul {
+	display: inline;
+	padding: 10px 0px 0px 0px;
+	list-style: none;
+	float: right;
+}
+
+ul li {
+	font-family: Arial;
+	font-size: 16px;
+	font-weight: bold;
+	display: inline-block;
+	margin-right: -4px;
+	position: relative;
+	padding: 15px 50px 17px;
+}
+
+ul li :hover {
+	background: #FFD553;
+}
+
+a:link { color: #FFFFFF; }
+
+a:visited { color: #FFFFF; }
+
+a:hover { color: #1C11A54; }
+
+a:active { color: #FFFFFF; }
+
+a {
+	text-decoration: none;
+}
+
+ul li ul {
+	padding: 0;
+	position: absolute;
+	top: 48px;
+	left: 0;
+	width: 139px;
+	display: none;
+	visibility: hidden;
+	z-index: 1;
+}
+
+ul li ul li {
+	background: #FFD533;
+	display: block;
+}
+
+ul li ul li:hover {
+	background: #85B7EC;
+}
+
+ul li:hover ul {
+	display: block;
+	visibility: visible;
+}
+
+.scroll-area {
+	position: absolute;
+	height: 100%;
+	overflow: auto;
+}
+
+.footer {
+	background-color: yellow;
+	grid-column-end: span 3;
+}
