@@ -1,62 +1,149 @@
 body {
 	font-family: helvetica, arial, sans-serif;
 	margin: 0;
+    background: linear-gradient(318deg, #0005ff, #c3d014, #e42f2f, #0005ff, #c3d014, #e42f2f);
+    background-size: 800% 800%;
+
+    -webkit-animation: AnimationName 30s ease infinite;
+    -moz-animation: AnimationName 30s ease infinite;
+    animation: AnimationName 30s ease infinite;
 }
 
-h1 {
-	font-style: italic;
+@-webkit-keyframes AnimationName {
+    0%{background-position:0% 11%}
+    50%{background-position:100% 90%}
+    100%{background-position:0% 11%}
+}
+@-moz-keyframes AnimationName {
+    0%{background-position:0% 11%}
+    50%{background-position:100% 90%}
+    100%{background-position:0% 11%}
+}
+@keyframes AnimationName {
+    0%{background-position:0% 11%}
+    50%{background-position:100% 90%}
+    100%{background-position:0% 11%}
+}
+
+h1, p, h2, em {
 	color: #ffffff;
+}
+
+.header h1 {
+	top:300px;
+	left: 40%;
+	position: absolute;
+	text-align: center;
+}
+
+
+.login-content h1, .login-content h2, .error {
+	margin-left: 15px;
+}
+
+.login-content h1 {
+	margin-top: 40px;
+	margin-bottom: 40px
+}
+
+em {
+	margin-top: 40px;
+}
+
+.contact-content h1, .contact-content h2, .contact-content input[type=text] {
+	margin-left: 15px;
+}
+
+.contact-content h1 {
+	margin-top: 40px;
+	margin-bottom: 40px
 }
 
 .home-grid-container {
 	display: grid;
 	grid-template-columns: 150px auto 150px;
-	grid-template-rows: 100px 600px 600px 150px;
+	grid-template-rows: 100px 500px 100px 700px 100px 50px;
 	height: 100vh;
 	width; 100vw;
 }
 
 .home-content {
 	box-sizing: border-box;
-	background-color: blue;
+	background-color: black;
 	position: relative;
 	padding-left: 10px;
 	grid-columns-start: 2;
 	grid-column-end: span 1;
+	border-radius: 25px;
 }
 
 .login-grid-container {
 	display: grid;
 	grid-template-columns: auto 600px auto;
-	grid-template-rows: 100px auto 600px auto;
+	grid-template-rows: 100px auto 500px auto;
 	height: 100vh;
 	width; 100vw;
 }
 
 .login-content {
 	box-sizing: border-box;
-	background-color: blue;
+	background-color: black;
 	position: relative;
 	padding-left: 10px;
 	grid-columns-start: 2;
 	grid-column-end: span 1;
+	border-radius: 25px;
+}
+
+input[type=text], input[type=password]{
+  	width: 90%;
+	height: 40px;
+  	padding: 12px 20px;
+  	margin: 15px 15px;
+  	box-sizing: border-box;
+	border-radius: 5px;
+}
+
+input[type=submit] {
+	position: relative;
+	float: right;
+  	background-color: #4CAF50;
+  	border: none;
+  	color: white;
+  	padding: 16px 32px;
+  	text-decoration: none;
+  	margin: 50px 8% 0 0;
+  	cursor: pointer;
+	border-radius: 25px;
 }
 
 .contact-grid-container {
 	display: grid;
 	grid-template-columns: auto 800px auto;
-	grid-template-rows: 100px auto 600px auto;
+	grid-template-rows: 100px 10% 920px 10%;
 	height: 100vh;
 	width; 100vw;
 }
 
 .contact-content {
 	box-sizing: border-box;
-	background-color: blue;
+	background-color: black;
 	position: relative;
 	padding-left: 10px;
 	grid-columns-start: 2;
 	grid-column-end: span 1;
+	border-radius: 25px;
+}
+
+textarea[type=comment] {
+	width: 90%;
+	height: 160px;
+  	padding: 12px 20px;
+  	margin: 15px;
+  	box-sizing: border-box;
+	border-radius: 5px;
+	resize: none;
+	text-align: start;
 }
 
 .header {
@@ -64,41 +151,54 @@ h1 {
 	background-color: red;
 	grid-columns-start: 1;
 	grid-column-end: span 3;
+	grid-row-start: 1;
+	grid-row-end: span 2;
+	border-radius: 80% / 10%;
 }
 
+.banner {
+	width: 100%;
+	height: 100%;
+}
 .nav {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
 	box-sizing: border-box;
-	background-color: grey;
+	background-color: black;
 	grid-columns-start: 1;
 	grid-column-end: span 3;
+	z-index: 10;
 }
 
 ul {
 	display: inline;
-	padding: 10px 0px 0px 0px;
+	padding: 6px 0px 0px 0px;
 	list-style: none;
 	float: right;
 }
 
 ul li {
+	height: 100%;
 	font-family: Arial;
-	font-size: 16px;
+	font-size: 14px;
 	font-weight: bold;
 	display: inline-block;
-	margin-right: -4px;
 	position: relative;
-	padding: 15px 50px 17px;
+	padding: 15px 45px 17px;
 }
 
-ul li :hover {
-	background: #FFD553;
+ul :hover {
+	background: #add8e6;
+	border-radius: 25px;
 }
 
 a:link { color: #FFFFFF; }
 
-a:visited { color: #FFFFF; }
+a:visited { color: #FFFFFF; }
 
-a:hover { color: #1C11A54; }
+a:hover { color: #FFFFFF; }
 
 a:active { color: #FFFFFF; }
 
@@ -133,11 +233,24 @@ ul li:hover ul {
 
 .scroll-area {
 	position: absolute;
-	height: 100%;
+	height: 80%;
+	width: 98%;
 	overflow: auto;
 }
 
 .footer {
-	background-color: yellow;
+	background-color: black;
 	grid-column-end: span 3;
+}
+
+.copyright_contact {
+	position: absolute;
+	left: 0;
+	bottom: -60%;
+}
+
+.copyright_login {
+	position: absolute;
+	left: 0;
+	bottom: 0;
 }

@@ -27,56 +27,131 @@
 			<div class="nav">
 			
 				<ul>
-				
-					<li><a href="index.html">Home<a></li>
 					
-					<li><a>Tours</a>
+					<!--Links to other pages-->
 					
-						<ul>
+					<li><a href="index.php">Home<a></li>
+					
+					<li><a href="Query1.php">Query1<a></li>
+					
+					<li><a href="Query2.php">Query2</a></li>
 						
-							<li><a href="gannets.html">Gannets</a></li>
-							
-							<li><a>Geology</a></li>
+					<li><a href="contact.php">Contact</a></li>
 						
-						</ul>
+					<li><a href="adduser.php">Add User</a></li>
+						
+					<li><a href="updateuser.php">Update User</a></li>
+						
+					<li><a href="deleteuser.php">Delete User</a></li>
 					
-					</li>
-					
-					<li><a>Contact</a></li>
+					<li><a href="login.php">Login</a></li>
 				
 				</ul>
 			
 			</div>
+				
+			<!--The header-->
+						
+			<div class="header">header</div>
 			
-			<div class="header">Header</div>
-			
-			<div></div>
+			<div></div><div></div><div></div><div></div>
 				
 			<div class="home-content">
 			
+				
+					<h1>
+						Songs:
+					</h1>
+					
+					<!--php query for the sum of the database music-->
+					<?php
+						//connect.php (tells where to connect servername, username, password, dbasename)
+						require "13_CSI_Database_Assessment_mysqli.php";
+						$query = ("SELECT SUM(Duration)
+						FROM `Main` 
+						WHERE 1
+						");
+
+						$result = mysqli_query($conn, $query);
+						
+						$row = mysqli_fetch_assoc($result); 
+						$sum = $row['SUM(Duration)'];
+					?>
+					
+					<p>
+						
+						Total Duration:
+						<?php 
+						
+							echo ($sum);
+						
+						?>
+						Seconds
+						<hr>
+					</p>
+					
+				
 				<div class="scroll-area">
-				<h1>Lorem Ipsum</h1>
-				Lorem ipsum dolor sit amet, 
-				consectetur adipiscing elit. Aliquam tempor leo condimentum 
-				diam lacinia congue. Donec venenatis, eros ac elementum congue, 
-				sem mi porttitor magna, at cursus sem mauris ac felis. Aliquam 
-				erat volutpat. Donec justo arcu, posuere pharetra commodo sagittis
-				, placerat in turpis. Morbi ultrices pharetra ligula. Integer et 
-				elementum lorem, a imperdiet mauris. Duis accumsan ex felis. Nam 
-				ac felis pretium augue suscipit suscipit a ac sapien. Ut vehicula 
-				augue quis facilisis molestie. In quis sapien consequat, porttitor
-				lorem a, lacinia arcu. Suspendisse potenti. Vestibulum nec 
-				tristique orci. Phasellus ligula velit, pellentesque dapibus 
-				lacus ac, lobortis tristique ligula. Donec tempus sem non quam 
-				mollis aliquam. Donec condimentum metus nec lectus scelerisque 
-				ornare. Phasellus sit amet fringilla augue, non feugiat nunc.
+					
+					<!--php query to get all the related info from the database-->
+					<?php
+						//connect.php (tells where to connect servername, username, password, dbasename)
+						require "13_CSI_Database_Assessment_mysqli.php";
+						$query = ("SELECT t.Title,
+						a.Album,
+						r.Artist,
+						g.Genre,
+						m.Duration,
+						m.Size
+						FROM `Main` as m
+						INNER JOIN Album AS a ON m.Album_ID = a.Album_ID
+						INNER JOIN Title AS t ON m.Title_ID = t.Title_ID
+						JOIN Main2Artist AS z ON m.Music_ID = z.Music_ID
+						JOIN Artist AS r ON r.Artist_ID = z.Artist_ID
+						JOIN Main2Genre AS y ON m.Music_ID = y.Music_ID
+						JOIN Genre AS g ON g.Genre_ID = y.Genre_ID
+						");
+
+						$result = mysqli_query($conn, $query);
+					
+						while($output=mysqli_fetch_assoc($result))
+						{
+					?>
+
+					<p>
+						
+						<!--Where the database info is displayed-->
+						
+						Title: <?php echo $output['Title']; ?> &emsp;&emsp;
+						
+						Artist: <?php echo $output['Artist']; ?> &emsp;&emsp;
+						
+						Album: <?php echo $output['Album']; ?> <br>
+						
+						Genre: <?php echo $output['Genre']; ?> &emsp;&emsp;
+						
+						Duration: <?php echo $output['Duration']; ?> &emsp;&emsp;
+						
+						Size: <?php echo $output['Size']; ?> <br><hr>
+					</p>
+					
+					<?php
+						}
+					?>
+					
 				</div>
 				
 			</div>
 				
-			<div></div>
+			<div></div><div></div><div></div><div></div>
 			
-			<div class="footer">Footer</div>
+			<div class="footer">
+				
+				<!--copyright statement-->
+				
+				<p>© Graeme. All rights reserved.</p>
+				
+			</div>
 		
 		</div>
 	
