@@ -1,3 +1,37 @@
+<?php
+		ob_start();
+		session_start();
+			$error = NULL;
+			if($_SERVER["REQUEST_METHOD"] == "POST") {
+				//connect.php(tells where to connect servername, dbasename, username, password)
+				require "Users_mysqli.php";
+				// username and password sent from form
+				$myusername = mysqli_real_escape_string($conn,$_POST['username']);
+				$mypassword = mysqli_real_escape_string($conn,$_POST['password']);
+				
+				
+				$query = "SELECT * FROM Users WHERE User_ID = '$myusername' and Password = '$mypassword' and (Permissions = 'admin' or Permissions = 'user') ";
+				
+				$result = mysqli_query($conn, $query);
+				$row = mysqli_fetch_array($result,MYSQLI_ASSOC);
+				
+				$count = mysqli_num_rows($result);
+				
+				// if result matched $myusername and $mypassword, table row must be 1 row
+				if($count == 1) {
+					$_SESSION['login_user'] = $myusername;
+					if($row[Permissions] == 'admin') {
+						header("location: index.php");
+					} else {
+						header("location: contact.php");
+					}
+				} else {
+					$error = "ERROR! Your Login Name or Password is invalid";
+					}
+				}
+		ob_end_flush();
+?>
+
 <!DOCTYPE html>
 
 <html lang="en">
@@ -8,11 +42,11 @@
 	
 		<meta charset="utf-8">
 		
-		<meta name="Keywords" content="html5, layout, CSS Grid System" />
+		<meta name="Keywords" content="html5, layout, CSS Grid System, database, music" />
 		
 		<meta name="Author" content="Ethan Aragona" />
 		
-		<meta name="Description" content="CSS grid system practise" />
+		<meta name="Description" content="Login page of my database website" />
 		
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		
@@ -28,54 +62,70 @@
 			
 				<ul>
 				
-					<li><a href="index.html">Home<a></li>
+					<!--Links to other pages-->
 					
-					<li><a>Tours</a>
+					<li><a href="index.php">Home<a></li>
 					
-						<ul>
+					<li><a href="Query1.php">Query1<a></li>
+					
+					<li><a href="Query2.php">Query2</a></li>
 						
-							<li><a href="gannets.html">Gannets</a></li>
-							
-							<li><a>Geology</a></li>
+					<li><a href="contact.php">Contact</a></li>
 						
-						</ul>
-					
-					</li>
-					
-					<li><a>Contact</a></li>
+					<li><a href="adduser.php">Add User</a></li>
 						
-					<li><a>Login</a></li>
+					<li><a href="updateuser.php">Update User</a></li>
+						
+					<li><a href="deleteuser.php">Delete User</a></li>
+					
+					<li><a href="login.php">Login</a></li>
 				
 				</ul>
 			
 			</div>
 			
-			<div></div><div></div><div></div><div></div>
+			<div></div><div></div><div></div><div></div><div></div><div></div><div></div>
 				
-			<div class="contact-content">
-			
-				<div class="scroll-area">
-				<h1>Lorem Ipsum</h1>
-				Lorem ipsum dolor sit amet, 
-				consectetur adipiscing elit. Aliquam tempor leo condimentum 
-				diam lacinia congue. Donec venenatis, eros ac elementum congue, 
-				sem mi porttitor magna, at cursus sem mauris ac felis. Aliquam 
-				erat volutpat. Donec justo arcu, posuere pharetra commodo sagittis
-				, placerat in turpis. Morbi ultrices pharetra ligula. Integer et 
-				elementum lorem, a imperdiet mauris. Duis accumsan ex felis. Nam 
-				ac felis pretium augue suscipit suscipit a ac sapien. Ut vehicula 
-				augue quis facilisis molestie. In quis sapien consequat, porttitor
-				lorem a, lacinia arcu. Suspendisse potenti. Vestibulum nec 
-				tristique orci. Phasellus ligula velit, pellentesque dapibus 
-				lacus ac, lobortis tristique ligula. Donec tempus sem non quam 
-				mollis aliquam. Donec condimentum metus nec lectus scelerisque 
-				ornare. Phasellus sit amet fringilla augue, non feugiat nunc.
-				</div>
+			<div class="login-content">
 				
+				<!--The form the user fills to login-->
+				
+				<form method = "post">
+					
+					<h1>
+						Login
+					</h1>
+
+					<h2>
+						Username:
+					</h2>
+
+					<input type = "text" name = "username" placeholder="Enter your username"/> <br />
+
+					<h2>
+						Password:
+					</h2>
+
+					<input type = "password" name="password" placeholder="Enter your password"/> <br />
+					
+					<em class="error"><?php echo $error; ?></em>
+
+					<input type="submit" value="Submit">
+					
+				</form>
+
 			</div>
 		
 		</div>
 	
+		<div class="copyright_login">
+			
+			<!--copyright statement-->
+			
+			<p>© Graeme. All rights reserved.</p>
+			
+		</div>
+			
 	</body>
 	
 </html>
