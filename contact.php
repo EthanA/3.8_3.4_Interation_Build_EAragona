@@ -27,53 +27,86 @@
 			<div class="nav">
 			
 				<ul>
+					
+					<!--Links to other pages-->
 				
-					<li><a href="index.html">Home<a></li>
+					<li><a href="index.php">Home<a></li>
 					
-					<li><a>Tours</a>
+					<li><a href="Query1.php">Query1<a></li>
 					
-						<ul>
+					<li><a href="Query2.php">Query2</a></li>
 						
-							<li><a href="gannets.html">Gannets</a></li>
-							
-							<li><a>Geology</a></li>
+					<li><a href="contact.php">Contact</a></li>
 						
-						</ul>
+					<li><a href="adduser.php">Add User</a></li>
+						
+					<li><a href="updateuser.php">Update User</a></li>
+						
+					<li><a href="deleteuser.php">Delete User</a></li>
 					
-					</li>
-					
-					<li><a>Contact</a></li>
+					<li><a href="login.php">Login</a></li>
 				
 				</ul>
 			
 			</div>
 			
-			<div></div><div></div><div></div><div></div>
+			<div></div><div></div><div></div><div></div><div></div><div></div><div></div>
 				
 			<div class="contact-content">
 			
-				<div class="scroll-area">
-				<h1>Lorem Ipsum</h1>
-				Lorem ipsum dolor sit amet, 
-				consectetur adipiscing elit. Aliquam tempor leo condimentum 
-				diam lacinia congue. Donec venenatis, eros ac elementum congue, 
-				sem mi porttitor magna, at cursus sem mauris ac felis. Aliquam 
-				erat volutpat. Donec justo arcu, posuere pharetra commodo sagittis
-				, placerat in turpis. Morbi ultrices pharetra ligula. Integer et 
-				elementum lorem, a imperdiet mauris. Duis accumsan ex felis. Nam 
-				ac felis pretium augue suscipit suscipit a ac sapien. Ut vehicula 
-				augue quis facilisis molestie. In quis sapien consequat, porttitor
-				lorem a, lacinia arcu. Suspendisse potenti. Vestibulum nec 
-				tristique orci. Phasellus ligula velit, pellentesque dapibus 
-				lacus ac, lobortis tristique ligula. Donec tempus sem non quam 
-				mollis aliquam. Donec condimentum metus nec lectus scelerisque 
-				ornare. Phasellus sit amet fringilla augue, non feugiat nunc.
-				</div>
+				<?php
+				//Get the connection to the database
+					require_once("13_DIT_contactform_mysqli.php")
+				?>
+				
+				<!--The form the user's fill to contact us-->
+				
+				<form action="connect.php" method="post">
+				
+				<h1>
+					Contact Us
+				</h1>
+
+				<h2 for="name">
+					Name:
+				</h2>
+
+				<input type = "text" id="name" name = "name" placeholder="Enter your name"/> <br />
+
+				<h2 for="email">
+					Email:
+				</h2>
+
+				<input type = "text" id="email" name = "email" placeholder="Enter your email"/> <br />
+
+				<h2 for="subject">
+					Subject:
+				</h2>
+
+				<input type = "text" id="subject" name="subject" placeholder="Enter the subject of your query"/> <br />
+
+				<h2 for="description">
+					Description:
+				</h2>
+
+				<textarea type = "comment" id="description" name="description" placeholder="Enter the description of your query"></textarea> <br />
+
+				<input type="submit" value="Submit">
 				
 			</div>
-		
+				
+			<div></div><div></div>
+			
 		</div>
-	
+		
+		<div class="copyright_contact">
+			
+			<!--copyright statement-->
+			
+			<p>© Graeme. All rights reserved.</p>
+			
+		</div>
+			
 	</body>
 	
 </html>
