@@ -50,9 +50,9 @@
 			
 			</div>
 				
-			<!--The header-->
+			<!--Link to image for banner-->
 						
-			<div class="header">header</div>
+			<div class="header"><img src="banner.jpg" class="banner"><h1>Graeme's Database</h1></div>
 			
 			<div></div><div></div><div></div><div></div>
 				
